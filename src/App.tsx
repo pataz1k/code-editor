@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import { FC, useState } from 'react'
 import CodeEditor from './components/CodeEditor'
+import { Button } from './components/ui/button'
 import {
 	Select,
 	SelectContent,
@@ -9,10 +10,9 @@ import {
 } from './components/ui/select'
 import { initialCodeEnum, LanguageType } from './constants/initalCode'
 import { exampleTask } from './constants/task'
-import { Button } from './components/ui/button'
 import { executeCode } from './utils/mockApi'
 
-const App: React.FC = () => {
+const App: FC = () => {
 	const [selectedLanguage, setSelectedLanguage] =
 		useState<LanguageType>('javascript')
 	const [code, setCode] = useState<string>(initialCodeEnum.javascript)

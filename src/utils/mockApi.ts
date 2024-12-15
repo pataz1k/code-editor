@@ -20,13 +20,13 @@ export const executeCode = async (
 		// 80% шанс успеха
 		return {
 			status: 'success',
-			output: 'Hello, world!\n',
+			output: `Executed ${request.language} code:\nOutput: Hello, world!\n`,
 		}
 	} else {
 		// 20% шанс ошибки
 		return {
 			status: 'error',
-			error: 'SyntaxError: Unexpected token',
+			error: `Error executing ${request.language}\ncode: SyntaxError: Unexpected token`,
 		}
 	}
 }
