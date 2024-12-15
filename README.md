@@ -1,50 +1,28 @@
-# React + TypeScript + Vite
+# Code Editor Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Краткое описание задачи
 
-Currently, two official plugins are available:
+Этот проект представляет собой веб-приложение для редактирования кода с поддержкой нескольких языков программирования. Пользователи могут выбирать язык программирования (JavaScript, Go, Python), редактировать код и выполнять задания в интерактивном редакторе. Приложение отображает задание рядом с редактором кода, позволяя пользователям работать над решением в режиме реального времени.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Инструкции по установке и запуску
 
-## Expanding the ESLint configuration
+1. Клонируйте репозиторий
+2. Запустите проект
+   ```bash
+   npm install
+   npm run dev
+    ```
+3. Проект будет запущен на https://localhost:5173/
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Информация о том как устроен мок-сервер
+1. Запрос (ExecuteCodeRequest):
+- Параметры запроса включают язык программирования и сам код, который нужно "выполнить".
 
-- Configure the top-level `parserOptions` property like this:
+2. Ответ (ExecuteCodeResponse):
+- Результат выполнения запроса содержит статус выполнения (success или error).
+- В случае успеха возвращается строковый вывод.
+- В случае ошибки возвращается описание ошибки.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+3. Механизм работы:
+- Функция симулирует задержку с помощью setTimeout, создавая задержку в 1 секунду, что имитирует сетевые задержки.
+- Далее, с вероятностью 80% она возвращает успешный результат с выводом "Hello, world!", а с вероятностью 20% — ошибку синтаксиса.
